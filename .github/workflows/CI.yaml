@@ -23,6 +23,13 @@ jobs:
         run: |
           pip install pip-audit
           pip-audit
+    
+      - name: Static Code Security Scan (SAST)
+        run: |
+         pip install bandit
+         bandit -r . -ll
 
+
+          
       - name: Run app
         run: python app.py
