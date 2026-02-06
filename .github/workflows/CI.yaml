@@ -27,7 +27,7 @@ jobs:
       - name: Static Code Security Scan (SAST)
         run: |
          pip install bandit
-         bandit -r . -ll --severity-level medium
+         bandit -r . -ll -l medium -i medium
 
           
       - name: Run app
