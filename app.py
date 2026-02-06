@@ -3,10 +3,12 @@ import os
 def add(a, b):
     return a + b
 
-def run_command():
-    os.system("ls")  # ❌ insecure shell execution
+import subprocess
 
-API_KEY = "my-secret-key"  # ❌ hardcoded secret
+subprocess.run(["ls"], check=True)
+
+
+API_KEY = os.getenv("API_KEY")
 
 if __name__ == "__main__":
     print(add(2, 3))
