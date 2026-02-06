@@ -1,0 +1,19 @@
+name: DevSecOps Security Scan
+
+on: [push]  # This triggers the scan every time you push code
+
+jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'             # Scan the file system
+          format: 'table'             # Output results in a table
+          exit-code: '1'              # Fail the pipeline if issues are found
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'   # Only stop for serious issues
