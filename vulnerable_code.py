@@ -1,9 +1,5 @@
-def login():
-    # BAD PRACTICE: Hardcoded credentials
-    username = "admin"
-    password = "superSecretPassword123" 
-    
-    if username == "admin":
-        print("Welcome!")
+def add(a, b):
+    return a + b
 
-login()
+if __name__ == "__main__":
+    print(add(2, 3))
