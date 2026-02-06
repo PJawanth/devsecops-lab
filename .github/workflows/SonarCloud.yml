@@ -1,0 +1,17 @@
+name: SAST with SonarQube
+
+on: [push]
+
+jobs:
+  sonar-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones disable reported metrics
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to comment on PRs
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # Your authentication token
